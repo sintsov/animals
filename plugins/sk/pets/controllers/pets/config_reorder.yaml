@@ -1,0 +1,4 @@
+title: Pets
+modelClass: Sk\Pets\Models\Pet
+toolbar:
+    buttons: reorder_toolbar

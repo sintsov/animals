@@ -1,0 +1,17 @@
+[catalogWidget mainCatalogWidget]
+catalog_url = "/pets/catalog/"
+
+[searchwidget mainSearchWidget]
+search_url = "/pets/catalog/"
+==
+<!-- From & pets-->
+<section class="section-md-bottom bg-gray-light">
+    <div class="shell">
+        <div class="box-form box-form-1">
+            {% component 'mainSearchWidget' %}
+        </div>
+    </div>
+
+    <!-- From & pets-->
+    {% component 'mainCatalogWidget' %}
+</section>

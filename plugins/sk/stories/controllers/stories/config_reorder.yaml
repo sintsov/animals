@@ -1,0 +1,4 @@
+title: Stories
+modelClass: Sk\Stories\Models\Story
+toolbar:
+    buttons: reorder_toolbar

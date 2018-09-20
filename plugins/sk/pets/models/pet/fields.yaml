@@ -1,0 +1,98 @@
+fields:
+    name:
+        label: 'sk.pets::lang.pets.name'
+        span: auto
+        required: 1
+        type: text
+    gender:
+        label: 'sk.pets::lang.pets.gender'
+        options:
+            male: Male
+            female: Female
+        span: auto
+        placeholder: 'sk.pets::lang.pets.gender_placeholder'
+        required: 1
+        type: dropdown
+    type:
+        label: 'sk.pets::lang.pets.type'
+        options:
+            dog: Dog
+            cat: Cat
+        span: auto
+        required: 1
+        type: dropdown
+    breed:
+        label: 'sk.pets::lang.pets.breed'
+        span: auto
+        required: 1
+        type: text
+    birthdate:
+        label: 'sk.pets::lang.pets.birthdate'
+        mode: date
+        span: auto
+        required: 1
+        type: datepicker
+    height:
+        label: 'sk.pets::lang.pets.height'
+        span: auto
+        required: 1
+        type: number
+    food:
+        label: 'sk.pets::lang.pets.is_food'
+        options:
+            'yes': 'Yes'
+            'no': 'No'
+        span: auto
+        required: 1
+        type: dropdown
+    place:
+        label: 'sk.pets::lang.pets.place'
+        options:
+            'Nevskiy Area': 'Nevskiy Area'
+            'Primorksiy Area': 'Primorksiy Area'
+        span: auto
+        required: 1
+        type: dropdown
+    arrival_date:
+        label: 'sk.pets::lang.pets.arrival_date'
+        mode: date
+        span: auto
+        required: 1
+        type: datepicker
+    departure_date:
+        label: 'sk.pets::lang.pets.departure_date'
+        mode: date
+        span: auto
+        required: 0
+        type: datepicker
+tabs:
+    fields:
+        picture:
+            type: repeater
+            tab: Misc
+            form:
+                fields:
+                    picture:
+                        label: 'sk.pets::lang.pets.pictures'
+                        mode: image
+                        span: auto
+                        type: mediafinder
+                        tab: Media
+        video:
+            label: Youtube
+            span: auto
+            placeholder: 'https://youtube.com/xxxxxx'
+            type: text
+            tab: Misc
+        description:
+            label: 'sk.pets::lang.pets.description'
+            span: full
+            size: small
+            type: richeditor
+            tab: Description
+        death_date:
+            label: 'sk.pets::lang.pets.death_date'
+            mode: datetime
+            span: auto
+            type: datepicker
+            tab: Death

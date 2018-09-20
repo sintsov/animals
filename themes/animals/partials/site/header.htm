@@ -1,0 +1,44 @@
+[localePicker]
+forceUrl = 0
+==
+<!-- Page Header-->
+<header class="page-header">
+    <!-- RD Navbar-->
+    <div class="rd-navbar-wrap">
+        <nav class="rd-navbar rd-navbar-transparent" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-sm-device-layout="rd-navbar-fixed" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-fixed" data-lg-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-body-class="rd-navbar-absolute-linked" data-stick-up-clone="false" data-md-stick-up-offset="72px" data-lg-stick-up-offset="72px">
+            <div class="rd-navbar-top-panel">
+                <div class="rd-navbar-top-panel-toggle" data-rd-navbar-toggle=".rd-navbar-top-panel"><span></span></div>
+                <div class="rd-navbar-top-panel-content">
+                    <ul class="inline-list-xxs">
+                        <li><a class="icon icon-xxs icon-circle icon-gray-outline icon-effect-1 fa fa-instagram" href="https://www.instagram.com/priut_help/"></a></li>
+                        <li><a class="icon icon-xxs icon-circle icon-gray-outline icon-effect-1 fa fa-vk" href="https://vk.com/priut_ru"></a></li>
+                        <li><a class="icon icon-xxs icon-circle icon-gray-outline icon-effect-1 fa fa-facebook" href="https://www.facebook.com/groups/571045389587414/"></a></li>
+                    </ul>
+                    {{ "Non-Governmental Shelter BF HELP FOR HOMELESS DOGS"|_ }}
+                    <!-- <div class="object-inline"><span class="icon icon-sm icon-gray material-icons-phone"></span><a class="link link-md link-white" href="callto:#">8 (911) 0-999-666</a></div> -->
+                </div>
+            </div>
+            <div class="rd-navbar-inner">
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                    <!-- RD Navbar Brand-->
+                    <div class="rd-navbar-brand">
+                        <a class="brand-name" href="/">
+                            <img src="{{ 'assets/images/_logo.jpg'|theme }}" alt="" width="176" height="45"/>
+                        </a>
+                    </div>
+                </div>
+                <!-- RD Navbar Nav-->
+                <div class="rd-navbar-nav-wrap">
+                    <div class="rd-navbar-nav-wrap-bg"></div>
+                    <!-- Top Menu -->
+                    {% partial 'site/_top-menu' %}
+                    <div class="local-picker">
+                        {% component 'localePicker' %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>

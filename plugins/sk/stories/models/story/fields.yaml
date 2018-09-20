@@ -1,0 +1,27 @@
+fields:
+    title:
+        label: 'sk.stories::lang.stories.title'
+        span: full
+        required: 1
+        type: text
+    body:
+        label: 'sk.stories::lang.stories.body'
+        span: full
+        size: ''
+        required: 1
+        type: textarea
+tabs:
+    fields:
+        picture:
+            label: 'sk.stories::lang.stories.image'
+            prompt: 'Add new item'
+            span: auto
+            type: repeater
+            tab: 'sk.stories::lang.stories.image'
+            form:
+                fields:
+                    picture:
+                        label: 'sk.stories::lang.stories.image'
+                        mode: image
+                        span: auto
+                        type: mediafinder

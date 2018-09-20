@@ -1,0 +1,12 @@
+plugin:
+    name: 'sk.stories::lang.plugin.name'
+    description: 'sk.stories::lang.plugin.description'
+    author: sk
+    icon: oc-icon-adjust
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'sk.stories::lang.plugin.name'
+        url: sk/stories/stories
+        icon: icon-automobile
+        permissions: {  }

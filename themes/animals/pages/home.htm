@@ -1,0 +1,25 @@
+title = "Demonstration"
+url = "/"
+layout = "default"
+
+[catalogWidget statCatalogWidget]
+catalog_url = "/pets/catalog/"
+==
+<!-- Page Header-->
+{% partial 'site/_swiper' %}
+
+<!-- From & pets-->
+{% partial 'site/_first-form' %}
+
+<!-- About Us-->
+{% partial 'site/_about' %}
+
+<!-- Four Pets -->
+{% partial 'site/_fourstories' %}
+
+<!-- Statistic Bar -->
+{% component 'statCatalogWidget' %}
+
+<!-- RD Google Map-->
+{% partial 'site/_google-map' %}
+

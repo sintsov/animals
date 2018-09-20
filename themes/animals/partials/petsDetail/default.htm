@@ -1,0 +1,347 @@
+attr = "none"
+==
+function onStart()
+{
+    // Anonymous Class only working on PHP7
+    $this['code'] = new class {
+        public function foo($image) {
+            return \Croppa::url('/storage/app/media' . $image, 400, 400);
+        }
+
+        public function getImageSize($img)
+        {
+            $img = 'storage/app/media' . $img;
+
+            $imageinfo = getimagesize($img);
+
+            $ix = $imageinfo[0];
+            $iy = $imageinfo[1];
+
+            $widthscale = $ix/1024;
+            $heightscale = $iy/1024;
+
+            if($widthscale > $heightscale )
+            {
+                if($widthscale > 1) { $nwidth = $ix*$widthscale; } else { $nwidth = $ix/$widthscale; }
+                if($heightscale > 1) { $nheight = $iy*$widthscale; } else { $nheight = $iy/$widthscale; }
+            } else {
+                if($widthscale > 1) { $nwidth = $ix*$heightscale; } else { $nwidth = $ix/$heightscale; }
+                if($heightscale > 1) { $nheight = $iy*$heightscale; } else { $nheight = $iy/$heightscale; }
+            }
+
+            return $nwidth . "x" . $nheight;
+        }
+
+        public function striptags($str) {
+            return strip_tags($str);
+        }
+
+        public function setOgImage($image)
+        {
+            //$this->page->og_image = $image;
+        }
+
+        public function setOgDesc($desc)
+        {
+            //$this->page->og_description = $desc;
+        }
+    };
+}
+
+function onEnd() {
+    if(isset($_SERVER['HTTPS'])){
+        $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+    }
+    else{
+        $protocol = 'http';
+    }
+
+    $this->page->title = '';
+    $this->page->og_image = $protocol . "://" . $_SERVER['HTTP_HOST'] . $this->code->foo($this->record->picture[0]['picture']);
+    $this->page->og_description = strlen($this->record->description) > 50 ? substr(strip_tags($this->record->description), 50) : strip_tags($this->record->description);
+}
+==
+{% set record = __SELF__.record %}
+{% set displayColumn = __SELF__.displayColumn %}
+{% set notFoundMessage = __SELF__.notFoundMessage %}
+
+{% if record %}
+
+<style>
+    .my-gallery.pet-details figure {
+        display: inline-block;
+    }
+    .my-gallery.pet-details figure.item-1 {
+        display: block;
+    }
+    .my-gallery.pet-details img {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+    }
+    .my-gallery.pet-details img.item-1 {
+        width: 400px;
+        height: 400px;
+        display: block;
+    }
+</style>
+
+<!-- Contacts-->
+<section class="section-md bg-white text-center">
+    <div class="shell">
+        <div class="range range-sm-center">
+            <div class="cell-sm-9 cell-md-12">
+                <!-- Box profile-->
+                <article class="box-profile">
+                    <div class="box-profile-left">
+                        <div class="my-gallery pet-details" itemscope itemtype="http://schema.org/ImageGallery">
+                            {% for pic in record.picture %}
+                                <figure itemprop="associatedMedia" class="item-{{ loop.index }}" itemscope itemtype="http://schema.org/ImageObject">
+                                    <a href="/storage/app/media{{ pic.picture | raw }}" itemprop="contentUrl" data-size="{{ code.getImageSize(pic.picture) }}">
+                                        <img src="{{ code.foo(pic.picture) }}" class="item-{{ loop.index }}" itemprop="thumbnail" alt="" />
+                                    </a>
+                                    <figcaption itemprop="caption description"></figcaption>
+                                </figure>
+                            {% endfor %}
+                        </div>
+                        <!-- <img class="box-profile-image" src="/storage/app/media" alt="" style="width: 400px !important"/> -->
+                    </div>
+                    <div class="box-profile-body">
+                        <p class="box-profile-name">{{ record.name | e }}</p>
+                        <p class="box-profile-description">{{ record.gender | raw }} {{ record.breed | raw }}</p>
+                        <div class="box-profile-text">
+                            <p class="box-profile-title">{{ "Birthdate" | _ }}</p>
+                            <p>{{ record.birthdate | raw }}</p>
+                            <p class="box-profile-title">{{ "Arrival date" | _ }}</p>
+                            <p>{{ record.arrival_date | raw }}</p>
+                            <p class="box-profile-title">{{ "Place" | _ }}</p>
+                            <p>{{ record.place | raw }}</p>
+                            <p class="box-profile-title">{{ "Is it eat pets food?" | _ }}</p>
+                            <p>{{ record.food | raw }}</p>
+                            <p class="box-profile-title">{{ "Description" | _ }}</p>
+                            <p>{{ record.description | raw }}</p>
+                            {% if record.video|length > 0 %}
+                                <p class="box-profile-title">{{ "Video" | _ }}</p>
+                                <p>
+                                    <iframe width="420" height="315" src="{{ record.video }}" frameborder="0" allowfullscreen></iframe>
+
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var initPhotoSwipeFromDOM = function(gallerySelector) {
+
+        // parse slide data (url, title, size ...) from DOM elements
+        // (children of gallerySelector)
+        var parseThumbnailElements = function(el) {
+            var thumbElements = el.childNodes,
+                numNodes = thumbElements.length,
+                items = [],
+                figureEl,
+                linkEl,
+                size,
+                item;
+
+            for(var i = 0; i < numNodes; i++) {
+
+                figureEl = thumbElements[i]; // <figure> element
+
+                // include only element nodes
+                if(figureEl.nodeType !== 1) {
+                    continue;
+                }
+
+                linkEl = figureEl.children[0]; // <a> element
+
+                size = linkEl.getAttribute('data-size').split('x');
+
+                // create slide object
+                item = {
+                    src: linkEl.getAttribute('href'),
+                    w: parseInt(size[0], 10),
+                    h: parseInt(size[1], 10)
+                };
+
+
+
+                if(figureEl.children.length > 1) {
+                    // <figcaption> content
+                    item.title = figureEl.children[1].innerHTML;
+                }
+
+                if(linkEl.children.length > 0) {
+                    // <img> thumbnail element, retrieving thumbnail url
+                    item.msrc = linkEl.children[0].getAttribute('src');
+                }
+
+                item.el = figureEl; // save link to element for getThumbBoundsFn
+                items.push(item);
+            }
+
+            return items;
+        };
+
+        // find nearest parent element
+        var closest = function closest(el, fn) {
+            return el && ( fn(el) ? el : closest(el.parentNode, fn) );
+        };
+
+        // triggers when user clicks on thumbnail
+        var onThumbnailsClick = function(e) {
+            e = e || window.event;
+            e.preventDefault ? e.preventDefault() : e.returnValue = false;
+
+            var eTarget = e.target || e.srcElement;
+
+            // find root element of slide
+            var clickedListItem = closest(eTarget, function(el) {
+                return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
+            });
+
+            if(!clickedListItem) {
+                return;
+            }
+
+            // find index of clicked item by looping through all child nodes
+            // alternatively, you may define index via data- attribute
+            var clickedGallery = clickedListItem.parentNode,
+                childNodes = clickedListItem.parentNode.childNodes,
+                numChildNodes = childNodes.length,
+                nodeIndex = 0,
+                index;
+
+            for (var i = 0; i < numChildNodes; i++) {
+                if(childNodes[i].nodeType !== 1) {
+                    continue;
+                }
+
+                if(childNodes[i] === clickedListItem) {
+                    index = nodeIndex;
+                    break;
+                }
+                nodeIndex++;
+            }
+
+
+
+            if(index >= 0) {
+                // open PhotoSwipe if valid index found
+                openPhotoSwipe( index, clickedGallery );
+            }
+            return false;
+        };
+
+        // parse picture index and gallery index from URL (#&pid=1&gid=2)
+        var photoswipeParseHash = function() {
+            var hash = window.location.hash.substring(1),
+                params = {};
+
+            if(hash.length < 5) {
+                return params;
+            }
+
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if(!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if(pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+
+            if(params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+
+            return params;
+        };
+
+        var openPhotoSwipe = function(index, galleryElement, disableAnimation, fromURL) {
+            var pswpElement = document.querySelectorAll('.pswp')[0],
+                gallery,
+                options,
+                items;
+
+            items = parseThumbnailElements(galleryElement);
+
+            // define options (if needed)
+            options = {
+
+                // define gallery index (for URL)
+                galleryUID: galleryElement.getAttribute('data-pswp-uid'),
+
+                getThumbBoundsFn: function(index) {
+                    // See Options -> getThumbBoundsFn section of documentation for more info
+                    var thumbnail = items[index].el.getElementsByTagName('img')[0], // find thumbnail
+                        pageYScroll = window.pageYOffset || document.documentElement.scrollTop,
+                        rect = thumbnail.getBoundingClientRect();
+
+                    return {x:rect.left, y:rect.top + pageYScroll, w:rect.width};
+                }
+
+            };
+
+            // PhotoSwipe opened from URL
+            if(fromURL) {
+                if(options.galleryPIDs) {
+                    // parse real index when custom PIDs are used
+                    // http://photoswipe.com/documentation/faq.html#custom-pid-in-url
+                    for(var j = 0; j < items.length; j++) {
+                        if(items[j].pid == index) {
+                            options.index = j;
+                            break;
+                        }
+                    }
+                } else {
+                    // in URL indexes start from 1
+                    options.index = parseInt(index, 10) - 1;
+                }
+            } else {
+                options.index = parseInt(index, 10);
+            }
+
+            // exit if index not found
+            if( isNaN(options.index) ) {
+                return;
+            }
+
+            if(disableAnimation) {
+                options.showAnimationDuration = 0;
+            }
+
+            // Pass data to PhotoSwipe and initialize it
+            gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+            gallery.init();
+        };
+
+        // loop through all gallery elements and bind events
+        var galleryElements = document.querySelectorAll( gallerySelector );
+
+        for(var i = 0, l = galleryElements.length; i < l; i++) {
+            galleryElements[i].setAttribute('data-pswp-uid', i+1);
+            galleryElements[i].onclick = onThumbnailsClick;
+        }
+
+        // Parse URL and open gallery if it contains #&pid=3&gid=1
+        var hashData = photoswipeParseHash();
+        if(hashData.pid && hashData.gid) {
+            openPhotoSwipe( hashData.pid ,  galleryElements[ hashData.gid - 1 ], true, true );
+        }
+    };
+
+    // execute above function
+    initPhotoSwipeFromDOM('.my-gallery');
+</script>
+{% else %}
+{{ notFoundMessage }}
+{% endif %}

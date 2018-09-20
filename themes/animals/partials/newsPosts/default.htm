@@ -1,0 +1,41 @@
+{% set posts = __SELF__.posts %}
+
+<div class="cell-xs-12 news-list">
+    <div class="range range-sm-center spacing-30">
+        {% for post in posts %}
+        <div class="cell-sm-10 cell-md-6 height-fill">
+            <blockquote class="quote-boxed">
+                {% if post.image %}
+                    <div class="quote-boxed-left">
+                        <a href="/{{ postPage }}/{{ post.slug }}">
+                            <img class="quote-boxed-image" src="{{ post.image|media }}" alt="{{ post.title }}" width="280" height="320"/>
+                        </a>
+                    </div>
+                {% endif %}
+                <div class="quote-boxed-body">
+                    <cite><a href="/{{ postPage }}/{{ post.slug }}">{{ post.title }}</a></cite>
+                    {% if post.introductory %}
+                    <p class="quote-text">
+                        <q>{{ post.introductory|raw }}</q>
+                    </p>
+                    {% elseif post.content %}
+                    <p class="quote-text">
+                        <q>{{ post.content|raw }}</q>
+                    </p>
+                    {% endif %}
+                    <div class="quote-boxed-meta">
+                        <ul class="quote-boxed-meta-list">
+                            <!-- <li class="object-inline"><span class="icon icon-sm icon-primary-filled icon-circle mdi mdi-thumb-up-outline"></span><span>10</span></li> -->
+                            <li><span>{{ post.published_at|date('Y-m-d') }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </blockquote>
+        </div>
+        {% else %}
+        <span class="post-nodata">{{ noPostsMessage }}</span>
+        {% endfor %}
+    </div>
+</div>
+
+{{ posts.render|raw }}

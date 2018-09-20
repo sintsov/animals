@@ -1,0 +1,10 @@
+name: Stories
+form: $/sk/stories/models/story/fields.yaml
+modelClass: Sk\Stories\Models\Story
+defaultRedirect: sk/stories/stories
+create:
+    redirect: 'sk/stories/stories/update/:id'
+    redirectClose: sk/stories/stories
+update:
+    redirect: sk/stories/stories
+    redirectClose: sk/stories/stories

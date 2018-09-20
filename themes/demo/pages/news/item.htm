@@ -1,0 +1,9 @@
+title = "News Article"
+url = "/news/item/:slug"
+layout = "default"
+is_hidden = 0
+
+[newsPost]
+slug = "{{ :slug }}"
+==
+{% component 'newsPost' %}

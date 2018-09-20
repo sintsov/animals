@@ -1,0 +1,24 @@
+plugin:
+    name: 'sk.pets::lang.plugin.name'
+    description: 'sk.pets::lang.plugin.description'
+    author: sk
+    icon: oc-icon-book
+    homepage: ''
+permissions:
+    sk.pets.manage:
+        tab: 'sk.pets::lang.plugin.name'
+        label: 'sk.pets::lang.pets.manage_pets'
+navigation:
+    pets-main-menu:
+        label: 'sk.pets::lang.pets.pets'
+        url: sk/pets/pets
+        icon: icon-book
+        permissions:
+            - sk.pets.manage
+        sideMenu:
+            pets-menu-catalog:
+                label: 'sk.pets::lang.plugin.name'
+                url: sk/pets/pets
+                icon: icon-sitemap
+                permissions:
+                    - sk.pets.manage

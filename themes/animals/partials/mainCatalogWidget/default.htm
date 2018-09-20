@@ -1,0 +1,43 @@
+{% set url   = __SELF__.catalog_url %}
+{% set count = __SELF__.count %}
+
+<div class="shell">
+    <div class="range spacing-30">
+        <div class="cell-sm-6">
+            <!-- Thumbnail modern-->
+            <div class="thumbnail-modern"><img class="thumbnail-modern-image" src="{{ 'assets/images/home1-1-567x381.jpg'|theme }}" alt="" width="567" height="381"/>
+                <div class="thumbnail-modern-caption">
+                    <div class="thumbnail-modern-caption-body">
+                        <div class="thumbnail-modern-title-left">{{ "Dogs" | _ }}</div>
+                        <div class="thumbnail-modern-title-right"><span>{{ "More than" | _ }}</span>
+                            <div><span class="number">{{ count.dog | raw }}</span><span>{{ "pets" | _ }}</span></div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-modern-caption-aside"><a class="thumbnail-modern-control" href="{{ url.dog | e }}">{{ "See more" | _ }}</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="cell-sm-6">
+            <!-- Thumbnail modern-->
+            <div class="thumbnail-modern"><img class="thumbnail-modern-image" src="{{ 'assets/images/home1-2-567x381.jpg'|theme }}" alt="" width="567" height="381"/>
+                <div class="thumbnail-modern-caption">
+                    <div class="thumbnail-modern-caption-body">
+                        <div class="thumbnail-modern-title-left">{{ "Cats" | _ }}</div>
+                        <div class="thumbnail-modern-title-right"><span>{{ "More than" | _ }}</span>
+                            <div><span class="number">{{ count.cat | raw }}</span><span>{{ "pets" | _ }}</span></div>
+                        </div>
+                    </div>
+                    <div class="thumbnail-modern-caption-aside"><a class="thumbnail-modern-control" href="{{ url.cat | e }}">{{ "See more" | _ }}</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="shell text-center">
+    <article class="box-text">
+        <h1>{{ "More than" | _ }} {{ count.all | raw }}</h1>
+        <div class="group-lg group-middle">
+            <h3 class="displacement-1">{{ "Adorable pets" | _ }}</h3><a class="btn btn-blue-marguerite btn-effect-anis" href="{{ url.main | e }}">{{ "See all pets" | _ }}</a>
+        </div>
+    </article>
+</div>

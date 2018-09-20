@@ -1,0 +1,32 @@
+[searchResults searchPageResult]
+resultsPerPage = 10
+showProviderBadge = 1
+noResultsMessage = "Your search returned no results."
+visitPageMessage = "Visit page"
+==
+
+
+<section class="section-md bg-white">
+    <div class="shell">
+        <div class="range range-md-center">
+            <div class="cell-md-10 cell-lg-8">
+                <form class="rd-search form-sm search-form-classic" action="{{ __SELF__.searchPage | page }}?q={{ query | url_encode(true) }}" method="GET">
+                    <div class="form-group">
+                        <input class="form-control form-control-square" id="rd-search-form-input" type="text" name="q" autocomplete="off"
+                               {% if __SELF__.useAutoComplete %}
+                               data-track-input
+                               data-request="onType"
+                               data-request-before-update="document.getElementById('autocomplete-results').classList.add('ss-search-form__results--visible')"
+                               data-request-update="'{{ __SELF__ }}::autocomplete': '#autocomplete-results'"
+                               {% endif %}>
+                        <label class="form-label" for="rd-search-form-input">Search...</label>
+                    </div>
+                    <button class="rd-search-submit" type="submit"></button>
+                </form>
+                <div class="rd-search-results">
+                    {% component 'searchPageResult' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

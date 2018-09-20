@@ -1,0 +1,132 @@
+[searchwidget catalogSearchWidget]
+search_url = "/pets/catalog/"
+==
+function onStart()
+{
+    // Anonymous Class only working on PHP7
+    $this['code'] = new class {
+        public function foo($image) {
+            return \Croppa::url('/storage/app/media' . $image, 200, 200);
+        }
+
+        public function striptags($str) {
+            return strip_tags($str);
+        }
+    };
+}
+==
+{% set records = __SELF__.records %}
+{% set displayColumn = __SELF__.displayColumn %}
+{% set noRecordsMessage = __SELF__.noRecordsMessage %}
+{% set detailsPage = __SELF__.detailsPage %}
+{% set detailsKeyColumn = __SELF__.detailsKeyColumn %}
+{% set detailsUrlParameter = __SELF__.detailsUrlParameter %}
+
+<!-- From & pets-->
+<section class="section-md-bottom bg-gray-light">
+    <div class="shell">
+        <div class="box-form box-form-1">
+            {% component 'catalogSearchWidget' %}
+        </div>
+    </div>
+</section>
+
+<!-- Adopt pets-->
+<section class="section-md bg-white text-center">
+    <div class="shell">
+        <div data-content-to="#adopt-cats">
+            <h3>{{ "One Of These Cats may become Yours"|_ }}</h3>
+            <p class="big text-width-medium">{{ "The best help to animals from a shelter is when they have a caring owner!"|_ }}</p>
+        </div>
+        <!-- Bootstrap tabs-->
+        <div class="tabs tabs-custom tabs-vertical tabs-corporate tabs-wide" id="tabs-1" data-url-tabs="true">
+            <!-- Tab panes-->
+            <div class="tab-content">
+                <!-- Tab 1-->
+                <div class="tab-pane fade in active" id="adopt-cats">
+                    <div class="range spacing-30">
+                        {% for record in records %}
+                            <div class="cell-md-3">
+                                {% spaceless %}
+                                {% if detailsPage %}
+                                    <!-- <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}"> -->
+                                    <a href="/pets/item/{{ record.id | raw }}">
+                                {% endif %}
+                                    <!-- Thumbnail boxed vertical-->
+                                    <div class="thumbnail-boxed thumbnail-boxed-vertical">
+                                        <div class="thumbnail-boxed-left"><img class="thumbnail-boxed-image" src="{{ code.foo(record.picture[0].picture) }}" alt="" style="width: 232px !important;"/>
+                                        </div>
+                                        <div class="thumbnail-boxed-body">
+                                            <p class="thumbnail-boxed-title">{{ record.name | e }}</p>
+                                            <!--
+                                            <div class="thumbnail-boxed-text pets-widget-block-text">
+                                                <p>{{ record.description|length > 50 ? code.striptags(record.description)|slice(0, 50) ~ '...' : code.striptags(record.description) }}</p>
+                                            </div>
+                                            -->
+                                            <div class="thumbnail-boxed-footer">
+                                                <ul class="thumbnail-boxed-meta pets-widget-block">
+                                                    <li><span class="icon icon-xs icon-tan-hide material-icons-event_available"></span>
+                                                        <span>
+                                                            {{ "Year of birth"|_ }}: {{ record.birthdate|date('Y') }}
+                                                        </span>
+                                                    </li>
+                                                    <!--
+                                                    <li><span class="icon icon-xs icon-tan-hide material-icons-done"></span><span>{{ record.height | e }} {{ "cm"|_ }}</span></li>
+                                                    <li><span class="icon icon-xs icon-tan-hide material-icons-place"></span><span>{{ record.place | e }}</span></li>
+                                                    -->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% if detailsPage %}
+                                </a>
+                                {% endif %}
+                                {% endspaceless %}
+                            </div>
+                        {% else %}
+                            <li class="no-data">{{ noRecordsMessage }}</li>
+                        {% endfor %}
+                    </div>
+
+                    {% if records.lastPage > 1 %}
+                    {% set prevDots = false %}
+                    {% set postDots = false %}
+
+                    <ul class="pagination-custom">
+                        <li {% if records.currentPage <= 1 %} class="disabled" {% endif %}><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}{{ query_string }}" aria-label="Previous"></a></li>
+
+                        {% for page in 1..records.lastPage %}
+
+
+                            {% if page > (records.currentPage+3) and postDots == false %}
+                                {% set postDots = true %}
+                                <li class="">
+                                    <a href="#" onclick=" return false;">...</a>
+                                </li>
+                            {% endif %}
+
+                            {% if (page <= (records.currentPage+3) and page >= (records.currentPage-3)) or page == 1 or page == records.lastPage %}
+
+                                <li class="{{ records.currentPage == page ? 'active' : null }}">
+                                    <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}{{ query_string }}">{{ page }}</a>
+                                </li>
+
+                            {% endif %}
+
+                            {% if page < (records.currentPage-3) and prevDots == false %}
+                                {% set prevDots = true %}
+                                <li class="">
+                                    <a href="#" onclick=" return false;">...</a>
+                                </li>
+                            {% endif %}
+
+                        {% endfor %}
+
+                        <li {% if records.currentPage >= records.lastPage %}  class="disabled" {% endif %}><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}{{ query_string }}" aria-label="Next"></a></li>
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

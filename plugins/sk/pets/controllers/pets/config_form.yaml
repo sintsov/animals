@@ -1,0 +1,11 @@
+name: Pets
+modelClass: Sk\Pets\Models\Pet
+form: $/sk/pets/models/pet/fields.yaml
+defaultRedirect: sk/pets/pets
+create:
+    redirect: 'sk/pets/pets/update/:id'
+    redirectClose: sk/pets/pets
+update:
+    redirect: sk/pets/pets
+    redirectClose: sk/pets/pets
+preview: {  }

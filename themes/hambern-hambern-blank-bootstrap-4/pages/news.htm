@@ -1,0 +1,17 @@
+title = "News"
+url = "/news"
+layout = "default"
+description = "News"
+is_hidden = 0
+
+[newsPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+postPage = "news"
+postFeatured = 0
+==
+Here placed all news on the site
+
+{{ posts }}

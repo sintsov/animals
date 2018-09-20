@@ -1,0 +1,39 @@
+==
+function onStart()
+{
+    $this['years'] = Carbon\Carbon::now()->year - 2001;
+}
+==
+<!-- Statistic Bar -->
+<section class="bg-primary oh">
+    <div class="shell">
+        <div class="range range-custom-bordered-small">
+            <div class="cell-xs-6 cell-sm-4 cell-md-3 cell-bordered">
+                <div class="counter-box-bold">
+                    <div class="counter" data-from="0" data-to="12">{{ years }}</div>
+                    <p class="counter-box-header">Years of Animal Shelter</p>
+                </div>
+            </div>
+            <div class="cell-xs-6 cell-sm-4 cell-md-3 cell-bordered">
+                <div class="counter-box-bold">
+                    <div class="counter counter-k" data-from="0" data-to="2.5" data-formatter="false">2.5</div>
+                    <p class="counter-box-header">Pets Adopted</p>
+                </div>
+            </div>
+            <div class="cell-xs-6 cell-sm-4 cell-md-3 cell-bordered">
+                <div class="counter-box-bold">
+                    <div class="counter" data-from="0" data-to="140">140</div>
+                    <p class="counter-box-header">Volunteers</p>
+                </div>
+            </div>
+            <div class="cell-xs-6 cell-sm-12 cell-md-3 height-fill">
+                <div class="col-decoration-skew">
+                    <div class="col-decoration-skew-inner">
+                        <h2>Do not</h2>
+                        <h5>Remain Indifferent</h5><a class="btn btn-trout-inverse btn-effect-anis btn-offset-medium" href="make-a-gift-online.html">donate now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

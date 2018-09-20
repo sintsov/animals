@@ -1,0 +1,18 @@
+title = "News Article"
+url = "/news/item/:slug"
+layout = "default"
+is_hidden = 0
+
+[newsPost]
+slug = "{{ :slug }}"
+==
+<section>
+    <div class="skip-swipe">
+        <!-- Skiping Swipe -->
+    </div>
+</section>
+<section class="section-md bg-gray-light text-center news-item-section">
+    <div class="shell">
+        {% component 'newsPost' %}
+    </div>
+</section>

@@ -1,0 +1,40 @@
+<ul class="rd-navbar-nav">
+    <li class="active">
+        <a href="/">{{ "Home"|_ }}</a>
+    </li>
+    <li>
+        <a href="/news/">{{ "News"|_ }}</a>
+    </li>
+    <li>
+        <a href="/pets/adopt/">{{ "Adopt a pet"|_ }}</a>
+
+    </li>
+    <li>
+        <a href="/pets/catalog/">{{ "Our pets"|_ }}</a>
+        <ul class="rd-navbar-dropdown tabs-nav">
+            <li>
+                <a href="/pets/catalog/?filter=14days">{{ "For 14 days"|_ }}</a>
+            </li>
+            <li>
+                <a href="/pets/catalog/?type=Cat">{{ "Adopt cats"|_ }}</a>
+            </li>
+            <li>
+                <a href="/pets/catalog/?type=Dog">{{ "Adopt dogs"|_ }}</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="/static/vacancies/">{{ "Vacancies"|_ }}</a>
+    </li>
+    <li>
+        <a href="/static/donate/">{{ "Help us"|_ }}</a>
+        <ul class="rd-navbar-dropdown tabs-nav">
+            <li>
+                <a href="/static/donate/">{{ "Donate"|_ }}</a>
+            </li>
+            <li>
+                <a href="/static/help/">{{ "Other help"|_ }}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

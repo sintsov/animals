@@ -1,0 +1,39 @@
+{% set stories = __SELF__.stories %}
+
+<!-- SUCCESS STORIES-->
+<section class="section-md bg-gray-light text-center">
+    <div class="shell">
+        <div class="range spacing-30">
+            <div class="cell-xs-12">
+                <h2>{{ "Last stories" | _}}</h2>
+                <p class="large">{{ "Here is shown last 4 stories" | _ }}</p>
+            </div>
+
+            <div class="cell-xs-12">
+                <div class="range range-sm-center spacing-30">
+                    {% for story in stories %}
+                        <div class="cell-sm-10 cell-md-6 height-fill">
+                            <!-- Quote boxed-->
+                            <blockquote class="quote-boxed" style="min-height: 250px;">
+                                <div class="quote-boxed-left"><img class="quote-boxed-image" src="/storage/app/media{{ story.picture[0].picture | raw }}" alt="" height="320"/>
+                                </div>
+                                <div class="quote-boxed-body">
+                                    <cite><a href="/stories/item/{{ story.id | raw }}">{{ story.title | e }}</a></cite>
+                                    <!-- <p class="caption">and Lex</p> -->
+                                    <p class="quote-text">
+                                        <q>{{ story.body|length > 50 ? story.body|slice(0, 50) ~ '...' : story.body  }}</q>
+                                    </p>
+                                    <div class="quote-boxed-meta">
+                                        <ul class="quote-boxed-meta-list">
+                                            <li class="object-inline"><span class="icon icon-sm icon-primary-filled icon-circle mdi mdi-thumb-up-outline"></span><span>10</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

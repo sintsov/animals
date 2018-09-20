@@ -1,0 +1,40 @@
+{% set pets = __SELF__.pets %}
+
+<!-- SUCCESS STORIES-->
+<section class="section-md bg-gray-light text-center">
+    <div class="shell">
+        <div class="range spacing-30">
+            <div class="cell-xs-12">
+                <h2>{{ "Last Pets" | _}}</h2>
+                <p class="large">{{ "Here is shown last 4 pets" | _ }}</p>
+            </div>
+
+            <div class="cell-xs-12">
+                <div class="range range-sm-center spacing-30">
+                    {% for pet in pets %}
+                        <div class="cell-sm-10 cell-md-6 height-fill">
+                            <!-- Quote boxed-->
+                            <blockquote class="quote-boxed" style="min-height: 250px;">
+                                <div class="quote-boxed-left"><img class="quote-boxed-image" src="/storage/app/media{{ pet.picture[0].picture | raw }}" alt="" height="320"/>
+                                </div>
+                                <div class="quote-boxed-body">
+                                    <cite><a href="/pets/item/{{ pet.id | raw }}">{{ pet.name | e }}</a></cite>
+                                    <!-- <p class="caption">and Lex</p> -->
+                                    <p class="quote-text">
+                                        <q>{{ pet.description|length > 50 ? pet.description|slice(0, 50) ~ '...' : pet.description  }}</q>
+                                    </p>
+                                    <div class="quote-boxed-meta">
+                                        <ul class="quote-boxed-meta-list">
+                                            <li class="object-inline"><span class="icon icon-sm icon-primary-filled icon-circle mdi mdi-thumb-up-outline"></span><span>10</span></li>
+                                            <li><span>{{ "Year of birth"|_ }}: {{ pet.birthdate|date('Y') }}</span></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </blockquote>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

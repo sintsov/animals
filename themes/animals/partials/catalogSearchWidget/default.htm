@@ -1,0 +1,76 @@
+{% set url                  = __SELF__.search_url %}
+{% set criteria             = __SELF__.criteria %}
+{% set actual_parameters    = __SELF__.actual_parameters %}
+{% set filter               = __SELF__.filter %}
+
+<!-- RD Mailform-->
+<form class="form-style-classic" method="GET" action="/pets/catalog/" enctype="multipart/form-data">
+    <input type="hidden" name="filter" value="{{ filter|raw }}" />
+    <div class="range range-xs-center range-sm-bottom spacing-30">
+        <div class="cell-xs-10 cell-sm-6 cell-md-4">
+            <div class="form-group">
+                <label class="form-label-outside" for="form-location">{{ "Location" | _ }}</label>
+                <!--Select 2-->
+                <select class="form-control select-filter" id="form-location" data-placeholder="{{ "Any location" | _ }}" data-minimum-results-for-search="Infinity" data-constraints="@Required" name="place">
+                <option value="any" {% if actual_parameters.location == "any" %} selected {% endif %}>{{ "Any location" | _ }}</option>
+                {% for place in criteria.place %}
+                <option value="{{ place|raw }}" {% if actual_parameters.place == place %} selected {% endif %}>{{ place|e }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="cell-xs-10 cell-sm-6 cell-md-4">
+            <div class="form-group">
+                <label class="form-label-outside" for="form-animal-type">{{ "Animal type" | _ }}</label>
+                <!--Select 2-->
+                <select class="form-control select-filter" id="form-animal-type" data-placeholder="{{ "Any type" | _ }}" data-minimum-results-for-search="Infinity" data-constraints="@Required" name="type">
+                <option value="any" {% if actual_parameters.type == "any" %} selected {% endif %}>{{ "Any type" | _ }}</option>
+                {% for type in criteria.type %}
+                <option value="{{ type|raw }}" {% if actual_parameters.type == type %} selected {% endif %}>{{ type|e }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="cell-xs-10 cell-sm-6 cell-md-4">
+            <div class="form-group">
+                <label class="form-label-outside" for="form-sex">{{ "Gender" | _ }}</label>
+                <!--Select 2-->
+                <select class="form-control select-filter" id="form-sex" data-placeholder="{{ "Any gender" | _ }}" data-minimum-results-for-search="Infinity" data-constraints="@Required" name="gender">
+                <option value="any" {% if actual_parameters.gender == "any" %} selected {% endif %}>{{ "Any gender" | _ }}</option>
+                {% for gender in criteria.gender %}
+                <option value="{{ gender|raw }}" {% if actual_parameters.gender == gender %} selected {% endif %}>{{ gender|e }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="cell-xs-10 cell-sm-6 cell-md-4">
+            <div class="form-group">
+                <label class="form-label-outside" for="age-group">{{ "Age group" | _ }}</label>
+                <!--Select 2-->
+                <select class="form-control select-filter" id="age-group" data-placeholder="{{ "Any age" | _ }}" data-minimum-results-for-search="Infinity" data-constraints="@Required" name="age">
+                <option value="any" {% if actual_parameters.age == "any" %} selected {% endif %}>{{ "Any age" | _ }}</option>
+                {% for key, age in criteria.age %}
+                <option value="{{ key|raw }}" {% if actual_parameters.age == key %} selected {% endif %}>{{ age|e }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="cell-xs-10 cell-sm-6 cell-md-4">
+            <div class="form-group">
+                <label class="form-label-outside" for="form-breed">{{ "Breed" | _ }}</label>
+                <!--Select 2-->
+                <select class="form-control select-filter" id="form-breed" data-placeholder="{{ "Any breed" | _ }}" data-minimum-results-for-search="Infinity" data-constraints="@Required" name="breed">
+                <option value="any" {% if actual_parameters.breed == "any" %} selected {% endif %}>{{ "Any breed" | _ }}</option>
+                {% for breed in criteria.breed %}
+                <option value="{{ breed|raw }}" {% if actual_parameters.breed == breed %} selected {% endif %}>{{ breed|e }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="cell-xs-10 cell-sm-6 cell-md-4">
+            <div class="form-group">
+                <input class="btn btn-block btn-primary btn-effect-anis" type="submit" value="Find Pets"/>
+            </div>
+        </div>
+    </div>
+</form>

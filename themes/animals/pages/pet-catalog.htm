@@ -1,0 +1,29 @@
+title = "Our pets"
+url = "/pets/catalog/:page?"
+layout = "internal"
+is_hidden = 0
+
+[petfilterwidget petsCatalog]
+modelClass = "Sk\Pets\Models\Pet"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "pets/item"
+detailsKeyColumn = ":id"
+detailsUrlParameter = "id"
+recordsPerPage = 16
+pageNumber = "{{ :page }}"
+sortColumn = "arrival_date"
+sortDirection = "desc"
+==
+<!-- Breadcrumbs & Page title-->
+<div class="page-title">
+    <div class="page-title-text">{{ "Our pets"|_ }}</div>
+    <ul class="breadcrumbs-custom">
+        <li><a href="/">{{ "Home"|_ }}</a></li>
+        <li class="active">{{ "Our pets"|_ }}</li>
+    </ul>
+</div>
+
+{% component 'petsCatalog' %}

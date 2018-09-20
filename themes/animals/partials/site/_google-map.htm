@@ -1,0 +1,41 @@
+<!-- RD Google Map-->
+
+<script>
+    function initMap() {
+        var uluru = {lat: 59.895903, lng: 30.407379};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 16,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFeB0kVA6ouyJ_gEvFbMaefLy3cBCyRwo&callback=initMap">
+</script>
+
+<section class="box-wrap">
+    <div class="box-wrap-map">
+        <div class="mgoogle-map rd-google-map__model" id="map"></div>
+    </div>
+    <div class="box-wrap-content">
+        <div class="shell">
+            <div class="box-wrap-content-interactive">
+                <div class="box-contacts">
+                    <h4>{{ "Address" | _ }}</h4>
+                    <address>
+                        <p>Санкт-Петербург, пр. Большой Смоленский, д. 9</p>
+                    </address>
+                    <h4>{{ "Phone" | _ }}</h4>
+                    <ul class="list-0">
+                        <li><a class="link link-md link-gray-darker" href="callto:#">8 (911) 0-999-666</a></li>
+                    </ul>
+                    <h4>{{ "E-mail" | _ }}</h4><a class="link-gray" href="mailto:#">info@priut.ru</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

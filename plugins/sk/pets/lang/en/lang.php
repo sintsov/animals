@@ -1,0 +1,32 @@
+<?php return [
+    'plugin' => [
+        'name' => 'Pet Catalogs',
+        'description' => '',
+    ],
+    'pets' => [
+        'name' => 'Name',
+        'gender' => 'Gender',
+        'gender_placeholder' => 'Select gender...',
+        'type' => 'Type',
+        'breed' => 'Breed',
+        'birthdate' => 'Birthdate',
+        'height' => 'Height (cm)',
+        'is_food' => 'Is it eat pets food?',
+        'place' => 'Place',
+        'arrival_date' => 'Arrival date',
+        'departure_date' => 'Departure date',
+        'death_date' => 'Date of Death',
+        'pictures' => 'Pictures',
+        'video' => 'Video',
+        'manage_pets' => 'Manage pets',
+        'pets' => 'Pets',
+        'description' => 'Description',
+        'catalog_widget' => 'Catalog Widget',
+        'catalog_url' => 'Catalog URL',
+        'search_widget' => 'Search Widget',
+        'search_url' => 'Search Url',
+        'catalog_widget_short_description' => 'Short widget for main page',
+        'catalog_with_filter_widget' => 'Pets catalog with filters',
+        'catalog_with_filter_widget_description' => 'Show all pets with filters'
+    ],
+];

@@ -1,0 +1,11 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table sk_pets_pets'
+    - builder_table_create_sk_pets_pets.php
+1.0.3:
+    - 'Added type of pet'
+    - builder_table_update_sk_pets_pets.php
+1.0.4:
+    - 'Change date to date'
+    - builder_table_update_sk_pets_pets_2.php

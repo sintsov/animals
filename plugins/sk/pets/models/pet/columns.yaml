@@ -1,0 +1,13 @@
+columns:
+    name:
+        label: 'sk.pets::lang.pets.name'
+        type: text
+        searchable: true
+        sortable: true
+    picture:
+        label: 'sk.pets::lang.pets.pictures'
+        type: partial
+        path: ~/plugins/sk/pets/models/pet/_image.htm
+    arrival_date:
+        label: 'sk.pets::lang.pets.arrival_date'
+        type: date

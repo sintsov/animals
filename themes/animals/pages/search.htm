@@ -1,0 +1,32 @@
+title = "Search"
+url = "/search"
+layout = "internal"
+is_hidden = 0
+
+[viewBag]
+localeUrl[ru] = "/static/search"
+
+[searchInput searchPageInput]
+useAutoComplete = 0
+autoCompleteResultCount = 5
+showProviderBadge = 1
+searchPage = "search.htm"
+==
+<!-- Breadcrumbs & Page title-->
+<div class="page-title">
+    <div class="page-title-text">{{ "Search"|_ }}</div>
+    <ul class="breadcrumbs-custom">
+        <li><a href="/">{{ "Home"|_ }}</a></li>
+        <li class="active">{{ "Search"|_ }}</li>
+    </ul>
+</div>
+
+{% component 'searchPageInput' %}
+      
+<section class="section-md bg-gray-light text-center news-section">
+    <div class="shell">
+        <div class="range spacing-30">
+            {% component 'searchResults' %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+title = "Story"
+url = "/stories/item/:id"
+layout = "internal"
+is_hidden = 0
+
+[builderDetails storiesDetail]
+modelClass = "Sk\Stories\Models\Story"
+identifierValue = "{{ :id }}"
+modelKeyColumn = "id"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+<!-- Breadcrumbs & Page title-->
+<div class="page-title">
+    <div class="page-title-text">{{ "Story"|_ }}</div>
+    <ul class="breadcrumbs-custom">
+        <li><a href="/">{{ "Home"|_ }}</a></li>
+        <li class="active">{{ "Story"|_ }}</li>
+    </ul>
+</div>
+{% component 'storiesDetail' %}

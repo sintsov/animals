@@ -1,0 +1,39 @@
+fields:
+    watermark:
+        label: 'alexis.watermark::lang.watermark.image'
+        mode: image
+        fileTypes: 'jpg,png,gif'
+        useCaption: false
+        span: left
+        type: fileupload
+        commentAbove: 'alexis.watermark::lang.comments.allow'
+    offsetX:
+        label: 'alexis.watermark::lang.watermark.offsetX'
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: text
+        commentAbove: 'alexis.watermark::lang.comments.offsetX'
+    offsetY:
+        label: 'alexis.watermark::lang.watermark.offsetY'
+        oc.commentPosition: ''
+        span: left
+        type: text
+        commentAbove: 'alexis.watermark::lang.comments.offsetY'
+    quality:
+        label: 'alexis.watermark::lang.watermark.quality'
+        oc.commentPosition: ''
+        span: left
+        required: 1
+        type: text
+        commentAbove: 'alexis.watermark::lang.comments.quality'
+    transparency:
+        label: 'alexis.watermark::lang.watermark.transparency'
+        oc.commentPosition: ''
+        span: left
+        type: text
+        commentAbove: 'alexis.watermark::lang.comments.transparency'
+    clear_button:
+        label:
+        type: partial
+        path: $/alexis/watermark/models/settings/_clear_button.htm

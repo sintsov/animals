@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: Clear
+
+# Model Form Field configuration
+form: $/alexis/watermark/models/clear/fields.yaml
+
+# Model Class name
+modelClass: Alexis\Watermark\Models\Clear
+
+# Default redirect location
+defaultRedirect: alexis/watermark/clear
+
+# Create page
+create:
+    title: Create Clear
+    redirect: alexis/watermark/clear/update/:id
+    redirectClose: alexis/watermark/clear
+
+# Update page
+update:
+    title: Edit Clear
+    redirect: alexis/watermark/clear
+    redirectClose: alexis/watermark/clear
+
+# Preview page
+preview:
+    title: Preview Clear

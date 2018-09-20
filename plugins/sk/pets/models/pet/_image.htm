@@ -1,0 +1,6 @@
+<?php
+if(!empty($record->picture[0]['picture'])){
+    echo '<img src="/storage/app/media'.$record->picture[0]['picture'].'" height="40" style="margin-top: -10px; margin-bottom: -10px;"></img>';
+} else {
+    echo '';
+}

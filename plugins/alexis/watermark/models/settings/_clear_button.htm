@@ -1,0 +1,15 @@
+<div class="form-group">
+    <button  type="button" class="btn btn-danger js-clear-files" ><?= e(trans('alexis.watermark::lang.comments.button.text')) ?></button>
+</div>
+<div class="form-group">
+    <p class="help-block before-field"><?= e(trans('alexis.watermark::lang.comments.button.comment')) ?></p>
+</div>
+
+<script>
+$( '.js-clear-files' ).click(function(){
+    $.get( '/clear_watermark', function( data ){
+    }, 'json' );
+    $.oc.flashMsg({text: "<?= e(trans('alexis.watermark::lang.comments.button.was_deleted')) ?>", 'class': 'success', 'interval': 2});
+    return false;
+});
+</script>
