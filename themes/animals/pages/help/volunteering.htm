@@ -1,0 +1,37 @@
+title = "Volunteering"
+url = "/static/help/volunteering"
+layout = "internal"
+meta_title = "Volunteering"
+meta_description = "Volunteering"
+is_hidden = 0
+
+[viewBag]
+localeUrl[ru] = "/static/help/volunteering"
+
+[siteSearchInclude]
+==
+<!-- Breadcrumbs & Page title-->
+<div class="page-title">
+    <div class="page-title-text">{{ "Volunteering"|_ }}</div>
+    <ul class="breadcrumbs-custom">
+        <li><a href="/">{{ "Home"|_ }}</a></li>
+        <li class="active">{{ "Volunteering"|_ }}</li>
+    </ul>
+</div>
+
+{% component 'siteSearchInclude' %}
+
+<section class="section-md bg-gray-light text-center news-section">
+    <div class="shell">
+        <div class="range spacing-30">
+            <div class="cell-xs-2"></div>
+            <div class="cell-xs-8">
+                <h4>Volunteering info...</h4>
+                <div class="post-content" style="text-align: left;">
+                    Volunteering info...
+                </div>
+            </div>
+            <div class="cell-xs-2"></div>
+        </div>
+    </div>
+</section>

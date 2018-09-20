@@ -1,0 +1,37 @@
+title = "Reports"
+url = "/static/about/reports"
+layout = "internal"
+meta_title = "Reports"
+meta_description = "Reports"
+is_hidden = 0
+
+[viewBag]
+localeUrl[ru] = "/static/about/reports"
+
+[siteSearchInclude]
+==
+<!-- Breadcrumbs & Page title-->
+<div class="page-title">
+    <div class="page-title-text">{{ "Reports"|_ }}</div>
+    <ul class="breadcrumbs-custom">
+        <li><a href="/">{{ "Home"|_ }}</a></li>
+        <li class="active">{{ "Reports"|_ }}</li>
+    </ul>
+</div>
+
+{% component 'siteSearchInclude' %}
+
+<section class="section-md bg-gray-light text-center news-section">
+    <div class="shell">
+        <div class="range spacing-30">
+            <div class="cell-xs-2"></div>
+            <div class="cell-xs-8">
+                <h4>Reports info...</h4>
+                <div class="post-content" style="text-align: left;">
+                    Reports info...
+                </div>
+            </div>
+            <div class="cell-xs-2"></div>
+        </div>
+    </div>
+</section>

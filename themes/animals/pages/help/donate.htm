@@ -1,0 +1,37 @@
+title = "Donate"
+url = "/static/help/donate"
+layout = "internal"
+meta_title = "Donate"
+meta_description = "Donate"
+is_hidden = 0
+
+[viewBag]
+localeUrl[ru] = "/static/help/donate"
+
+[siteSearchInclude]
+==
+<!-- Breadcrumbs & Page title-->
+<div class="page-title">
+    <div class="page-title-text">{{ "Donate"|_ }}</div>
+    <ul class="breadcrumbs-custom">
+        <li><a href="/">{{ "Home"|_ }}</a></li>
+        <li class="active">{{ "Donate"|_ }}</li>
+    </ul>
+</div>
+
+{% component 'siteSearchInclude' %}
+
+<section class="section-md bg-gray-light text-center news-section">
+    <div class="shell">
+        <div class="range spacing-30">
+            <div class="cell-xs-2"></div>
+            <div class="cell-xs-8">
+                <h4>Donate info...</h4>
+                <div class="post-content" style="text-align: left;">
+                    Donate info...
+                </div>
+            </div>
+            <div class="cell-xs-2"></div>
+        </div>
+    </div>
+</section>

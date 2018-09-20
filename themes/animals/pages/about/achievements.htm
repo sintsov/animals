@@ -1,0 +1,37 @@
+title = "Achievements"
+url = "/static/about/achievements"
+layout = "internal"
+meta_title = "Achievements"
+meta_description = "Achievements"
+is_hidden = 0
+
+[viewBag]
+localeUrl[ru] = "/static/about/achievements"
+
+[siteSearchInclude]
+==
+<!-- Breadcrumbs & Page title-->
+<div class="page-title">
+    <div class="page-title-text">{{ "Achievements"|_ }}</div>
+    <ul class="breadcrumbs-custom">
+        <li><a href="/">{{ "Home"|_ }}</a></li>
+        <li class="active">{{ "Achievements"|_ }}</li>
+    </ul>
+</div>
+
+{% component 'siteSearchInclude' %}
+
+<section class="section-md bg-gray-light text-center news-section">
+    <div class="shell">
+        <div class="range spacing-30">
+            <div class="cell-xs-2"></div>
+            <div class="cell-xs-8">
+                <h4>Achievements info...</h4>
+                <div class="post-content" style="text-align: left;">
+                    Achievements info...
+                </div>
+            </div>
+            <div class="cell-xs-2"></div>
+        </div>
+    </div>
+</section>
