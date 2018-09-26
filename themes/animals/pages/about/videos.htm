@@ -21,14 +21,49 @@ localeUrl[ru] = "/static/about/videos"
 
 {% component 'siteSearchInclude' %}
 
+<style>
+    .v-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+    }
+    .v-video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
 <section class="section-md bg-gray-light text-center news-section">
     <div class="shell">
         <div class="range spacing-30">
             <div class="cell-xs-2"></div>
             <div class="cell-xs-8">
-                <h4>Videos info...</h4>
                 <div class="post-content" style="text-align: left;">
-                    Videos info...
+
+                    <h5>Ролик студии "КоробкА" о приюте в Приморском районе, его питомцах и волонтерах-кинологах</h5>
+                    <p class="v-container">
+                        <iframe class="v-video" src="https://www.youtube.com/embed/XrBV2J3a608" frameborder="0" allowfullscreen></iframe>
+                    </p>
+                    </br>
+                    <h5>Видео о приюте на Большом Смоленском</h5>
+                    <p class="v-container">
+                        <iframe class="v-video" src="https://www.youtube.com/embed/6PB3G505ii8" frameborder="0" allowfullscreen></iframe>
+                    </p>
+                    </br>
+                    <h5>Кошки приюта на Большом Смоленском</h5>
+                    <p class="v-container">
+                        <iframe class="v-video" src="https://www.youtube.com/embed/D9kP22X4uYk" frameborder="0" allowfullscreen></iframe>
+                    </p>
+                    </br>
+                    <h5>"Монолог собаки" - победитель конкурса "Спасибо, Друг!"</h5>
+                    <p class="v-container">
+                        <iframe class="v-video" src="https://www.youtube.com/embed/iG0ZZLZm1lc" frameborder="0" allowfullscreen></iframe>
+                    </p>
+
+
                 </div>
             </div>
             <div class="cell-xs-2"></div>
