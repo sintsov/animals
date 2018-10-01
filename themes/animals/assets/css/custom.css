@@ -1,0 +1,6 @@
+.panel-custom .panel-body a {
+    display: inline;
+}
+.panel-custom .panel-body a.btn {
+    display: block;
+}
