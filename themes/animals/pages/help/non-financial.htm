@@ -21,17 +21,168 @@ localeUrl[ru] = "/static/help/non-financial/"
 
 {% component 'siteSearchInclude' %}
 
-<section class="section-md bg-gray-light text-center news-section">
+<section class="section-md bg-white text-center">
     <div class="shell">
-        <div class="range spacing-30">
-            <div class="cell-xs-2"></div>
-            <div class="cell-xs-8">
-                <h4>Non-financial Help info...</h4>
-                <div class="post-content" style="text-align: left;">
-                    Non-financial Help info...
+        <div data-content-to="#adopt-cats" class="show">
+            <h3>Долги перед поставщиками</h3>
+            <p class="big text-width-medium">Друзья! В приюте проводится ежегодная вакцинация животных, приобретены
+                необходимые для этого препараты.<br/>
+                Пожалуйста, помогите нам рассчитаться с поставщиками!<br/>
+                Пока не оплачены эти счета, мы не можем делать следующие заказы! Более 750 животных могут остаться без
+                ветеринарной помощи!
+            </p>
+        </div>
+        <div data-content-to="#adopt-dogs">
+            <h3>Корма и консервы</h3>
+            <p class="big text-width-smaller">Looking for a true friend for you, your children or your family? Consider
+                adopting a dog from Animal Shelter today!</p>
+        </div>
+        <div data-content-to="#adopt-small-pets">
+            <h3>Медикаменты</h3>
+            <p class="big text-width-small">Small animals can be great companions if you cannot afford a bigger pet or
+                live in a small house, but are looking for someone cute to adopt.</p>
+        </div>
+        <!-- Bootstrap tabs-->
+        <div class="tabs tabs-custom tabs-vertical tabs-corporate tabs-wide" id="tabs-1" data-url-tabs="true">
+            <!-- Nav tabs-->
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#debt" data-toggle="tab">Долги перед поставщиками</a></li>
+                <li><a href="#adopt-dogs" data-toggle="tab">Корма и консервы</a></li>
+                <li><a href="#adopt-small-pets" data-toggle="tab">Медикаменты</a></li>
+                <li><a href="#adopt-small-pets" data-toggle="tab">КПСС: Помощь старым собакам</a></li>
+                <li><a href="#adopt-small-pets" data-toggle="tab">Амуниция</a></li>
+                <li><a href="#adopt-small-pets" data-toggle="tab">Хозяйственные нужды</a></li>
+                <li><a href="#adopt-small-pets" data-toggle="tab">Поощрение сотрудников</a></li>
+                <li><a href="#adopt-small-pets" data-toggle="tab">Благотворительная распродажа</a></li>
+            </ul>
+            <!-- Tab panes-->
+            <div class="tab-content">
+                <!-- Tab 1-->
+                <div class="tab-pane fade in active" id="debt">
+                    {% partial 'donate/non-financial/debt.htm' %}
+                </div>
+                <!-- Tab 2-->
+                <div class="tab-pane fade" id="adopt-dogs">
+                    {% partial 'donate/non-financial/food.htm' %}
+                </div>
+                <!-- Tab 3-->
+                <div class="tab-pane fade" id="adopt-small-pets">
+                    <div class="range spacing-70">
+                        <div class="cell-md-6"><img class="img-responsive" src="images/adopt-small-pets-1-370x240.jpg"
+                                                    alt="" width="370" height="240">
+                        </div>
+                        <div class="cell-md-6 text-gray-darker">
+                            <p>We have a selection of small animals available for adoption. Our animal shelter offers
+                                you a possibility to adopt almost any small pet that come in different shapes and sizes
+                                and can be perfect friends or companions for your family. Our range of small pets
+                                includes:</p>
+                            <ul class="marked-list">
+                                <li>Hamsters</li>
+                                <li>Rabbits</li>
+                                <li>Parrots</li>
+                            </ul>
+                        </div>
+                        <div class="cell-xs-12">
+                            <blockquote class="quote-primary">
+                                <div class="quote-primary-body">
+                                    <svg class="quote-primary-mark" version="1.1" baseProfile="tiny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="21px" height="15px" viewBox="0 0 21 15" overflow="scroll" xml:space="preserve" preserveAspectRatio="none">
+                          <path d="M9.597,10.412c0,1.306-0.473,2.399-1.418,3.277c-0.944,0.876-2.06,1.316-3.349,1.316                                        c-1.287,0-2.414-0.44-3.382-1.316C0.482,12.811,0,11.758,0,10.535c0-1.226,0.58-2.716,1.739-4.473L5.603,0H9.34L6.956,6.37                                        C8.716,7.145,9.597,8.493,9.597,10.412z M20.987,10.412c0,1.306-0.473,2.399-1.418,3.277c-0.944,0.876-2.06,1.316-3.35,1.316                                        c-1.288,0-2.415-0.44-3.381-1.316c-0.966-0.879-1.45-1.931-1.45-3.154c0-1.226,0.582-2.716,1.74-4.473L16.994,0h3.734l-2.382,6.37                                        C20.106,7.145,20.987,8.493,20.987,10.412z"></path>
+                        </svg>
+                                    <div class="quote-primary-text">
+                                        <q>I got a rabbit called Max 2 years ago from your shelter. I am so glad he has
+                                            joined my family. All my friends and relatives are so in love with him. He
+                                            brings in an element of cuteness I didn’t know was missing. Thank you for
+                                            Max, he is now the real member of my family.</q>
+                                    </div>
+                                </div>
+                                <div class="quote-primary-footer">
+                                    <cite>Dennis Williams</cite>
+                                </div>
+                            </blockquote>
+                        </div>
+                        <div class="cell-xs-12">
+                            <div class="range spacing-negative-1">
+                                <div class="cell-md-6"><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-2-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">Brittany</p>
+                                        <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
+                                    </div>
+                                </a><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-3-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">Harlow</p>
+                                        <p class="thumbnail-minimal-subtitle">Hamster</p>
+                                    </div>
+                                </a><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-4-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">August</p>
+                                        <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
+                                    </div>
+                                </a><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-5-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">Christina</p>
+                                        <p class="thumbnail-minimal-subtitle">Rabbit</p>
+                                    </div>
+                                </a>
+                                </div>
+                                <div class="cell-md-6"><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-6-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">Martha</p>
+                                        <p class="thumbnail-minimal-subtitle">Hamster</p>
+                                    </div>
+                                </a><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-7-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">Mink</p>
+                                        <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
+                                    </div>
+                                </a><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-8-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">Penelope</p>
+                                        <p class="thumbnail-minimal-subtitle">Rabbit</p>
+                                    </div>
+                                </a><a class="thumbnail-minimal" href="single-page-pets.html">
+                                    <div class="thumbnail-minimal-left"><img class="thumbnail-minimal-image-minimal"
+                                                                             src="images/adopt-small-pets-9-96x107.jpg"
+                                                                             alt="" width="96" height="107">
+                                    </div>
+                                    <div class="thumbnail-minimal-body">
+                                        <p class="thumbnail-minimal-title">Macy</p>
+                                        <p class="thumbnail-minimal-subtitle">Budgerigar Parrot</p>
+                                    </div>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="cell-xs-2"></div>
         </div>
     </div>
 </section>

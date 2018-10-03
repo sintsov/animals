@@ -4,3 +4,7 @@
 .panel-custom .panel-body a.btn {
     display: block;
 }
+
+.food .thumbnail-minimal + .thumbnail-minimal {
+    margin-top: 20px;
+}
